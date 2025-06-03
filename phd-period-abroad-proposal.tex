@@ -26,24 +26,30 @@
 	
 	\hrule width \hsize \kern 1mm \hrule width \hsize height 2pt 
 	\vspace{0.8cm}
-	{ \large \bfseries Ph.D. Thesis Proposal}\\[0.6cm]
-	{ \large Engineering Many-Agent Cooperative Learning in Collective Adaptive Systems }\\[0.6cm]
+	{ \large \bfseries Ph.D. Period Abroad Proposal for Marco Polo}\\[0.6cm]
+	{ \large Transfer Learning and Coordination Techniques for Distributed Collective Intelligence }\\[0.6cm]
 
-	\bfseries{February, 2024}
+	\bfseries{June, 2025}
 
 
     \vspace{1.5cm}
     
     \noindent
-    \begin{minipage}[t]{0.45\textwidth}
+    \begin{minipage}[t]{0.3\textwidth}
         \raggedright
         \textbf{Supervisors:}\\[0.5cm]
         Prof. Mirko Viroli\\
         Prof. Danilo Pianini\\
         Prof. Matteo Ferrara
     \end{minipage}%
+	\hfill
+    \begin{minipage}[t]{0.3\textwidth}
+        \centering
+        \textbf{Abroad Supervisor:}\\[0.5cm]
+        Ivana Dusparic 
+    \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.45\textwidth}
+    \begin{minipage}[t]{0.3\textwidth}
         \raggedleft
         \textbf{PhD Candidate:}\\[0.5cm]
         Davide Domini
@@ -54,9 +60,9 @@
 
 \end{titlepage}
 
-\section{Research Context}\label{sec:intro}
+\section{Proposal}\label{sec:intro}
 
-\subsection{Context}
+\paragraph{Context.}
 Computing devices have become ubiquitous in everyday life.
 %
 This trend has paved the way for research fields aimed at exploiting
@@ -78,7 +84,7 @@ Notably, we focus on systems involving a large number of agents -- potentially i
  or thousands -- which is commonly referred to in the literature 
  as many-agents~\cite{DBLP:phd/ethos/Yang21a}.
 
-\subsection{Opportunities and challenges}
+\paragraph{Opportunities and challenges.}
 These systems enable the development of innovative applications in a wide range of real-world domains, such as: 
  smart cities~\cite{DBLP:conf/icse/IftikharRBW017}, 
  traffic control~\cite{DBLP:journals/tits/ChuWCL20,DBLP:books/sp/Muller2011/ProthmannTBHMS11} 
@@ -109,87 +115,8 @@ Another key consideration is the locality principle, where operational efficienc
 Furthermore, partial observability introduces uncertainty, as individual components may have 
  limited or incomplete information about the global state, complicating accurate 
  decision-making~\cite{DBLP:conf/uai/HeDB22}.
-%
-Data privacy is also a growing concern, particularly in light of stringent regulations like GDPR~\cite{GDPR}
- in the European Union, necessitating privacy-preserving learning techniques.
-%
-Finally, data heterogeneity~\cite{DBLP:journals/fgcs/MaZLCQ22,DBLP:journals/ijon/ZhuXLJ21},
- stemming from diverse source, can significantly impact learning stability and accuracy.
-%
-Addressing these challenges is essential for the effective deployment of cooperative learning 
- in collective adaptive systems.
 
-\subsection{Background}
-In the literature, two primary approaches to developing these systems can be identified:
- those based on manual design and those based on automatic design.
-
-\paragraph{Manual design.}
-One approach of manual design that has recently gained significant attention is 
- Aggregate Computing (AC)~\cite{DBLP:journals/computer/BealPV15}. 
-% 
-AC is a macro-programming~\cite{DBLP:journals/csur/Casadei23} paradigm that shifts the focus from individual 
- devices to the collective system as a whole, providing a functional programming language to express collective 
- behaviors through computations over distributed data structures 
- known as computational fields~\cite{DBLP:journals/pervasive/MameiZL04,DBLP:journals/tocl/AudritoVDPB19}. 
-%
-Another relevant approach is multi-agent programming, which involves designing agent-based behaviors 
- using frameworks such as JaCaMo~\cite{boissier2020multi} or Jakta~\cite{DBLP:conf/eumas/BaiardiBCP23}.
-
-\paragraph{Automatic design.}
-Engineering CAS manually can be challenging and error-prone, particularly in complex, 
- non-stationary environments. 
-% 
-An alternative strategy is to develop methods for automatically design 
- behaviors, which can enhance adaptability.
-%
-There are different options for achieving this, depending on the specific task to be solved. 
-%
-On the one hand, for unsupervised learning scenarios, a widely adopted approach is to leverage multi-agent 
- reinforcement learning (MARL)~\cite{DBLP:journals/corr/abs-1911-10635,DBLP:journals/tsmc/BusoniuBS08}---in the 
- literature, in case of large scale of agents, it is commonly referred to as many-agent. 
-% 
-In MARL, learning is conceptualized as an interaction among multiple agents and their shared environment. 
-%
-Each agent follows a policy that dictates its actions based on its current state. 
-%
-The agent then executes the chosen action within the environment. 
-%
-As a result of these actions, the environment transitions to a new state and provides feedback 
- in the form of rewards to each agent. 
-% 
-Through this process, agents learn to optimize their policies, ultimately leading to the 
- emergence of complex collective behaviors.
-%
-On the other hand, for supervised learning scenarios, a common approach is 
- Federated Learning (FL)~\cite{DBLP:conf/aistats/McMahanMRHA17}.
-%
-FL not only enables cooperative learning to train a shared model from distributed datasets
- but also preserves data privacy.
-%
-This technique allows the agents to train a joint model without the need of collecting and merging
- multiple datasets into a single central server, thus supporting contexts in which privacy is a primary 
- concern---for instance, healthcare~\cite{DBLP:journals/csur/NguyenPPDSLDH23} 
- or banking~\cite{DBLP:series/lncs/LongT0Z20}.
-%
-Moreover, in highly distributed systems, given the large volume of generated data, it becomes inconvenient, 
- or also infeasible, to move all the data to a central server~\cite{DBLP:journals/comsur/NguyenDPSLP21}.
-%
-In the literature, most FL algorithms share a common learning flow: 
- \begin{enumerate*}[label=(\roman*)]
-	\item \emph{model initialization}: the central server initializes a common base model that is shared with each client;
-	\item \emph{local learning}: each client performs one or more steps of local learning on its own dataset;
-	\item \emph{local models sharing}: each client sends back to the central server the new model trained on its own data 
-     (i.e., the local model); and
-	\item \emph{local models aggregation}: the local models collected by the central server are aggregated to obtain the 
-     new global model.
- \end{enumerate*}
-%
-This process is carried out iteratively for a predefined number of global rounds. The most common and simple models
- aggregation method is called FedAvg; it was introduced in~\cite{DBLP:conf/aistats/McMahanMRHA17}
- and consists in performing an average of the local models to obtain the next global model.
-
-\subsection{Research gap}
-
+\paragraph{Research Gap.}
 Despite significant progress in the field of cooperative learning within CAS, 
  several challenges remain open, indicating substantial research gaps.
 %
@@ -217,345 +144,18 @@ This heterogeneity is frequently influenced by the spatial distribution of the a
 %
 This builds on the assumption that devices in spatial proximity have similar experiences and make similar 
  observations~\cite{esterle2022deep}, as
- the phenomena to capture is intrinsically context dependent
-% 
-However, this locality aspect is often overlooked in both MARL and FL literature.
+ the phenomena to capture is intrinsically context dependent.
 
-
-\section{Contribution}\label{sec:contribution}
-
-In this section, I present the main contributions achieved during the first year and a half of the PhD. 
-%
-All the experiments and tools developed as part of this work are publicly available and open source on GitHub, 
- distributed under a permissive license. 
-% 
-This is in line with our research group's strong commitment to open science and reproducibility, ensuring that 
- our findings can be easily accessed, validated, and extended by the community.
-
-\subsection{Conceptual Contributions}
-
-\subsubsection{Many-Agent Reinforcement Learning}
-
-As described above, in MARL, fully centralized or fully decentralized architectures are often 
- unfeasible due to technical constraints and challenges related to learning stability. 
-% 
-Therefore, it is crucial to find a trade-off between these two extremes to ensure both scalability and 
- effective learning. 
-% 
-Moreover, in CAS, it is essential to incorporate some form of collective knowledge to enhance 
- coordination and adaptability.
-% 
-To address these limitations, we explored two main directions. 
-%
-The first approach is the adoption of a Centralized Training Decentralized Execution (CTDE) architecture, 
- which leverages training on centralized experience to improve learning efficiency while maintaining 
- decentralized execution for scalability. 
-% 
-The second approach involves independent learners, where each agent learns autonomously but shares information with 
- its neighboring agents to foster collaboration and improve overall system performance.
-
-\paragraph{Centralized Learning.}
-In the CTDE framework, we collect experience from agents in a centralized 
- learner during training while deploying decentralized policies during execution. 
-% 
-To approximate these policies, we propose the use of Graph Neural Networks (GNNs) for two main reasons. 
-%
-First, GNNs enable the integration of both local experience and interactions with neighboring agents 
- when their connections are represented as a graph. 
-% 
-Second, GNNs allow training with centralized information while enabling decentralized and asynchronous execution, 
- requiring only data from an agent's immediate neighbors. 
-% 
-We tested this approach in two different CAS scenarios. 
-%
-In the first case, we applied this approach to optimize task allocation in the 
- edge-cloud continuum~\cite{DBLP:journals/taas/FarabegoliDAV2025,DBLP:conf/woa/DominiFAV24}, 
- demonstrating how agents executing a macro-program composed of multiple submodules can offload some of these submodules 
- to an edge or cloud server to meet latency and power constraints. 
-%
-Additionally, we showed that enhancing these graphs with collective information gathered through the macro-programming 
- improves adaptability to environmental changes. 
-% 
-In another study~\cite{DBLP:conf/coordination/VenturiniDAV2025}, we explored the effectiveness of GNNs in MARL for 
- scalability with a varying number of agents in a swarm of robots. 
-% 
-Specifically, we trained a GNN-based policy with few agents using a CTDE approach and then tested it 
- with an increasing number of agents to evaluate its ability to scale preserving performance.
-
-\paragraph{Independent Learning.}
-When a centralized experience collection is not feasible, making a CTDE architecture impractical, 
- an alternative approach is to adopt a Decentralized Training Decentralized Execution paradigm (DTDE). 
-% 
-In this setting, each agent trains its policy using only its own experience. 
-%
-However, this leads to less stable learning, requiring more time to converge and often resulting in lower accuracy. 
-%
-To mitigate these issues, we explored the impact of experience sharing among neighboring 
- agents~\cite{DBLP:conf/sac/MalucelliDAV25}, introducing a trade-off between CTDE and DTDE. 
-% 
-Specifically, we proposed three different neighbor-based approaches:
- \begin{enumerate*}[label=(\roman*)]
-	\item \emph{NN-sharing}: each agent collects the policies of all its neighbors and aggregates them with its own policy, 
-	 following a concept similar to federated learning;
-	\item \emph{Experience sharing}: each agent collects a sample of experience tuples (i.e., state, action, reward, next state) 
-	 from its neighbors to enhance learning; and
-	\item \emph{NN-consensus}: a simple consensus algorithm is applied among neighboring agents to obtain a shared policy, 
-	 effectively synchronizing their neural networks.
- \end{enumerate*}
-%
-We compared these three approaches against both DTDE and CTDE. 
-%
-Our results show that while CTDE and DTDE set the upper and lower bounds for reward and episode time (an approximation of 
- learning convergence time), all three proposed methods shift these metrics closer to CTDE, demonstrating their 
- effectiveness in improving the independent learning paradigm.
-
-\subsubsection{Federated Learning}
-
-An important challenge in cooperative learning within CAS is ensuring privacy.
-%
-A widely adopted approach in the literature is Federated Learning (FL), which enables agents 
- to collaboratively train a shared model without directly exchanging raw data. 
-% 
-However, FL typically relies on a centralized architecture, which may not be suitable for large-scale many-agent CAS, 
- as a central server introduces both a single point of failure and a potential bottleneck.
-%
-Another critical challenge in FL is data heterogeneity, meaning that data across clients is 
- non-independently and identically distributed (non-IID).
-% 
-For instance, depending on the level of skewness, some clients may only have access to a subset of the labels. 
-%
-This heterogeneity often arises from the spatial locality of agents collecting data, yet it is frequently 
- overlooked in the literature. 
-% 
-Even clustered FL algorithms, which assume that agents can be grouped into clusters with IID data internally, 
- are often evaluated using skewed data at the device level, limiting their real-world applicability.
-%
-To address this issue, we proposed ProFed~\cite{DBLP:conf/ijcnn/DominiAV2025}, a benchmarking framework that synthetically 
- partitions well-known computer vision datasets following these principles. 
-% 
-Specifically, ProFed creates subregions with IID data internally and non-IID data across clusters, better capturing the 
- real-world data distribution in large-scale CAS scenarios.
-
-Beyond this benchmark, we have developed several approaches to design learning algorithms that address these challenges. 
-%
-In our first work~\cite{DBLP:conf/coordination/DominiAEV24}, later extended in~\cite{domini2025fbflfieldbasedcoordinationapproach}, 
- we proposed leveraging aggregate computing, a macroprogramming approach, to create spatial-based subregions. 
-% 
-This builds upon the concept of Self-Organizing Coordination Regions~\cite{DBLP:conf/coordination/CasadeiPVN19}, 
- where a leader is elected for each subregion.
-%
-The leader is responsible for collecting data, computing updates, and sharing back these updates within its subregion.
-%
-In our algorithm, the leader acts as an aggregator for models trained by agents inside its subregion, leading to two key advantages. 
-%
-First, the system no longer relies on a centralized architecture but instead forms a resilient, self-organizing structure. 
-%
-Second, within each subregion, data becomes IID, allowing the training process to achieve higher accuracy.
-%
-To validate these effects, we conducted extensive simulations. 
-%
-Specifically, we compared our approach against several baselines--including FedAvg, 
- Scaffold~\cite{DBLP:conf/icml/KarimireddyKMRS20}, and FedProx~\cite{DBLP:conf/mlsys/LiSZSTS20}--on 
- widely used computer vision datasets (MNIST~\cite{lecun2010mnist}, Fashion-MNIST~\cite{DBLP:journals/corr/abs-1708-07747}, 
- and Extended MNIST~\cite{DBLP:journals/corr/CohenATS17}) under different levels of data skewness. 
-% 
-Additionally, we simulated random leader failures to assess system robustness. 
-%
-Our results demonstrate that the learning process dynamically stabilizes with new leaders, ensuring continuous training without 
- significant performance drops or interruptions.
-
-Our latest works~\cite{DBLP:journals/corr/abs-2407-12410,DBLP:journals/iot/DominiAFVE2025} build upon the concept of subregion 
- creation described above, extending it with the idea of space-fluidity~\cite{DBLP:journals/lmcs/CasadeiMPVZ23}. 
-% 
-In this approach, subregions are no longer formed based solely on spatial proximity but are dynamically adjusted using 
- similarity metrics to either shrink or expand their boundaries as needed.
-%
-Initially, a subregion is created based on spatial proximity, followed by the election of an aggregator. 
-%
-Then, the subregion is iteratively expanded or contracted based on an accumulated error metric. 
-%
-This adjustment process continues until the similarity error, measured from the aggregator outward, 
- falls below a predefined threshold.
-%
-In these studies, we employ a loss-based similarity check: each agent collects the models of its neighbors and performs an inference 
- step using its own data. 
-% 
-If the computed loss remains below the threshold, the neighboring agent's data is considered similar enough, meaning both agents belong 
- to the same subregion.
-%
-To evaluate this approach, we conducted extensive simulations with varying numbers and shapes of subregions. 
-%
-Our results show that the number of dynamically formed federations stabilizes to the actual number of effective subregions, 
- demonstrating the robustness and adaptability of our method.
-
-\subsection{Applied Contributions}
-
-A crucial aspect of training machine learning algorithms in the Many-Agent context is the efficiency and flexibility of simulation tools. 
-%
-Several simulators exist in the literature, including: NetLogo~\cite{tisue2004netlogo}, Sibilla~\cite{DBLP:journals/scp/GiudiceMQRL24}, 
- Alchemist~\cite{Pianini_2013}, ARGoS~\cite{DBLP:journals/swarm/PinciroliTOPBBMFCDBGD12}, 
- and PettingZoo~\cite{DBLP:conf/nips/TerryBGJHSSDHPW21}. 
-% 
-To assess their suitability for MARL, in~\cite{DBLP:conf/dsrt/DominiAPV24},  we examined them across several key characteristics: 
-\begin{enumerate*}[label=(\roman*)]
-	\item configurability;
-	\item lifecycle management; 
-	\item experience extraction;
-	\item scalability;
-	\item distributed execution; and
-	\item deep learning integration.
- \end{enumerate*}
-%
-Our analysis revealed that none of these simulators, except for Alchemist, fully satisfy all the specified characteristics. 
-%
-For instance, while ARGoS excels in configurability, lifecycle management, and experience extraction, 
- it lacks deep learning integration and distributed execution, making it less suitable for large-scale MARL experiments.
-%
-To address these limitations, we proposed a reusable simulation pipeline for MARL based on the Alchemist simulator and 
- demonstrated its flexibility and scalability in swarm robotics scenarios.
-
-When learning in CAS, beyond flexibility and efficiency in simulations, it is also crucial to incorporate 
- collective knowledge into the learning process. 
-% 
-In~\cite{DBLP:conf/coordination/DominiCAV23,DBLP:journals/scp/DominiCAV24}, we introduced ScaRLib, a MARL tool built on the Alchemist simulator, 
- that integrates RL algorithms with Aggregate Computing.
-%
-This integration enables each agent to enrich its state representation by incorporating collective information gathered from neighboring agents. 
-%
-By doing so, agents can make more informed decisions, improving coordination and adaptability.
-% 
-To evaluate the effectiveness of this approach, we conducted experiments in swarm robotics scenarios.
-
-Finally, in~\cite{DBLP:conf/coordination/AguzziNDR25}, we presented a real-world case study developed for the 
- European Researchers' Night, where a small swarm of five robots coordinated to form spatial patterns.
-%
-Here, learning was not included in the toolchain; instead, coordination was achieved purely through Aggregate Computing. 
-%
-However, this toolchain serves as a foundation for future real-world experiments, where we aim to integrate learning algorithms 
- to test their effectiveness in physical multi-agent systems.
-
-\subsection{List of Scientific Publications}\label{sec:pubblications}
-
- \sloppypar
- \paragraph{\emph{Published or accepted for pubblication.}}
- 
- \begin{enumerate}
-	 \item ScaRLib: A Framework for Cooperative Many Agent Deep Reinforcement 
-	  Learning in Scala.~\cite{DBLP:conf/coordination/DominiCAV23} --- \emph{International Conference on Coordination Languages and Models}
-	 \item ScaRLib: Towards a hybrid toolchain for aggregate computing and many-agent 
-	  reinforcement learning.~\cite{DBLP:journals/scp/DominiCAV24} --- \emph{Science of Computer Programming}
-	 \item Field-Based Coordination for Federated Learning.~\cite{DBLP:conf/coordination/DominiAEV24} 
-	  --- \emph{International Conference on Coordination Languages and Models}
-	 \item Towards Intelligent Pulverized Systems: a Modern Approach 
-	  for Edge-Cloud Services.~\cite{DBLP:conf/woa/DominiFAV24} --- \emph{25th Workshop “From Objects to Agents”}
-	 \item Proximity-based Self-Federated Learning.~\cite{DBLP:journals/corr/abs-2407-12410} 
-	  --- \emph{2024 IEEE International Conference on Autonomic Computing and Self-Organizing Systems (ACSOS)}
-	 \item Towards Self-Adaptive Cooperative Learning in Collective Systems.~\cite{DBLP:conf/acsos/Domini24} 
-	  --- \emph{2024 IEEE International Conference on Autonomic Computing and Self-Organizing Systems (ACSOS)}
-	 \item A Reusable Simulation Pipeline for Many-Agent Reinforcement Learning.~\cite{DBLP:conf/dsrt/DominiAPV24}
-	  --- \emph{28th {IEEE/ACM} International Symposium on Distributed Simulation and Real Time Applications, {DS-RT}}
-	 \item Neighbor-Based Decentralized Training Strategies for Multi-Agent 
-	  Reinforcement Learning.~\cite{DBLP:conf/sac/MalucelliDAV25}
-	  --- \emph{40th {ACM/SIGAPP} Symposium on Applied Computing, SAC}
- \end{enumerate}
- 
- \sloppypar
- \paragraph{\emph{Submitted for review.}}
- \begin{enumerate}
-	 \item Heterogeneous GNN for Collective-Task Offloading in Cloud-Edge via Deep
-	  Q-Learning.~\cite{DBLP:journals/taas/FarabegoliDAV2025} --- \emph{ACM Transactions on Autonomous and Adaptive Systems}
-	 \item ProFed: a Benchmark for Proximity-based non-IID Federated Learning.~\cite{DBLP:conf/ijcnn/DominiAV2025}
-	  --- \emph{International Joint Conference on Neural Networks}
-	 \item FBFL: A Field-Based Coordination Approach for Data Heterogeneity in 
-	  Federated Learning~\cite{domini2025fbflfieldbasedcoordinationapproach} --- \emph{Logical Methods Computer Science}
-	 \item Scalable Coordination in Swarms: A Graph Neural Network Approach.~\cite{DBLP:conf/coordination/VenturiniDAV2025}
-	  --- \emph{International Conference on Coordination Languages and Models}
-	 \item Decentralized Proximity-Aware Clustering for Self-Federated Learning.~\cite{DBLP:journals/iot/DominiAFVE2025} --- \emph{Internet of Things}
-	 \item A Demonstrator Toolchain for Self-organizing Robot Teams.~\cite{DBLP:conf/coordination/AguzziNDR25} 
-	  --- \emph{International Conference on Coordination Languages and Models}
- \end{enumerate}
-
-\section{Future Work}\label{sec:future}
-
-The investigation performed in this first year and a half, opened several research directions
- to be explored in the future.
-
-\paragraph{Real-world use cases.}
-
-First and foremost, it will be crucial to define a detailed set of real-world use cases where our proposed approaches can be applied. 
-%
-Potential applications include traffic control or heating management for smart buildings. 
-%
-This will allow us to test our methods not only on synthetic datasets but also in real-world scenarios, 
- ensuring their practical relevance and robustness. 
-% 
-Moreover, it will provide valuable insights into how the creation of specialized learning subregions, based on data distribution, 
- affects the size and complexity of the required models. 
-% 
-Our intuition is that decomposing a phenomenon into simpler subproblems will enable learning with smaller, more efficient models, 
- ultimately leading to resource savings.
-
-\paragraph{Energy Efficiency and Sparse Neural Networks.}
-Another key challenge in these systems is that devices often operate under strict computational constraints. 
-%
-For this reason, we see sparse neural networks as a promising research avenue. 
-%
-This technique enables the removal of unimportant weights in neural networks, allowing learning even on devices without 
- GPUs or powerful CPUs. 
-% 
-We have already begun experiments in this direction in collaboration with the University of Bolzano, 
- and our preliminary results are highly encouraging. 
-% 
-Future work will also include comparison with other model optimization techniques, such as quantization, 
- to further reduce the training footprint.
-
-\paragraph{Neighbor-based MARL and Transfer Learning.}
-Additional promising research directions stem from our work on neighbor-based MARL approaches.
-%
-Specifically, it will be interesting to investigate whether and how these methods stabilize learning in environments 
- where agents interact with highly localized phenomena. 
-% 
-Furthermore, in collaboration with a research group at Trinity College Dublin, we plan to explore the integration of neighbor-based 
- learning with transfer learning for reinforcement learning and aggregate computing.
-%
-This integration could provide multiple benefits. 
-%
-First, information exchange between agents would occur only when uncertainty is high in a given state, reducing unnecessary communication 
- and potentially improving training efficiency. 
-% 
-This way, an agent with low confidence in a state would avoid sharing misleading information with a more experienced agent, 
- which could otherwise negatively impact future learning.
-%
-Finally, by incorporating the self-organizing coordination region concept from aggregate computing, we can envision a scenario where 
- each region dynamically elects a teacher (i.e., the leader).
-% 
-This leader, having already learned the dynamics of its area, can assist nearby agents by sharing its experience. 
-%
-This could be particularly beneficial in settings where agents have heterogeneous models due to varying computational constraints. 
-%
-In such cases, a more powerful agent could train using a larger model, converge faster, and then act as a teacher to support resource-limited 
- agents in the learning process.
-
-\paragraph{Continual Learning}
-While our primary focus is on the more immediate research directions, 
- we also have a long-term vision for our work. 
-% 
-One possible future direction is the integration of continual learning (CL) techniques into our proposed approaches. 
-%
-Given that CAS are inherently dynamic and evolve over time, ensuring that the learning process can adapt to these changes is crucial. 
-%
-CL offers a promising solution by enabling models to learn from new data while retaining knowledge from past experiences. 
-%
-This would allow our models to remain up-to-date and effectively handle new scenarios without forgetting previously 
- acquired information.
-
-
-
-
-
-
-
-
+\paragraph{Research plan.}
+This research is expected to involve:
+\begin{itemize}
+	\item Investigation of scalable transfer learning mechanisms for decentralized learning in many-agent systems;
+	\item Investigation of macroprogramming coordination strategies -- such as dynamic leader election -- for enhancing 
+	 transfer learning in decentralized many-agent scenarios, particularly where spatial proximity influences 
+	 data distribution and learning dynamics;
+	\item Integration of the above into simulated environments and evaluation on representative case studies 
+	 (e.g., traffic control, robotic coordination).
+\end{itemize}
 
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
