@@ -84,6 +84,16 @@ Notably, we focus on systems involving a large number of agents -- potentially i
  or thousands -- which is commonly referred to in the literature 
  as many-agents~\cite{DBLP:phd/ethos/Yang21a}.
 
+In this proposal, we focus on a particularly challenging problem within CAS: 
+ enabling scalable decentralized machine learning across a large number of agents. 
+% 
+A key issue in this setting is how to reuse knowledge across agents operating in 
+ heterogeneous and dynamic environments. 
+% 
+This motivates the exploration of transfer learning as a core strategy, 
+ allowing agents to benefit from others' experiences while reducing redundant 
+ learning and improving overall convergence.
+
 \paragraph{Opportunities and challenges.}
 These systems enable the development of innovative applications in a wide range of real-world domains, such as: 
  smart cities~\cite{DBLP:conf/icse/IftikharRBW017}, 
@@ -116,20 +126,18 @@ Furthermore, partial observability introduces uncertainty, as individual compone
  limited or incomplete information about the global state, complicating accurate 
  decision-making~\cite{DBLP:conf/uai/HeDB22}.
 
+Transfer learning could provide a principled way to share and reuse knowledge while respecting 
+ local constraints. 
+%
+This opens up research questions around how to coordinate learning, 
+ when and what to transfer, and how to ensure stability and efficiency in dynamic 
+ multi-agent systems.
+
 \paragraph{Research Gap.}
 Despite significant progress in the field of cooperative learning within CAS, 
  several challenges remain open, indicating substantial research gaps.
 %
-First, achieving large-scale cooperative learning continues to be challenging, from both technological 
- and methodological perspectives. 
-% 
-Technologically, simulating these systems is highly resource-intensive, requiring significant 
- computational power and time. 
-% 
-This necessitates the development of more efficient tools and advanced learning pipelines to enhance 
- scalability and reduce resource consumption.
-%
-Methodologically, learning in environments with a high number of agents is often unstable and challenging to manage. 
+Learning in environments with a high number of agents is often unstable and challenging to manage. 
 %
 Centralized learning architectures are frequently impractical, primarily due to privacy concerns or technical 
  constraints related to communication and synchronization overheads. 
